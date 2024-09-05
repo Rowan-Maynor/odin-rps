@@ -24,11 +24,17 @@ function playRound(compChoice, humanChoice) {
     console.log("Human: " + humanChoice);
 
     if (humanChoice === "ROCK" && compChoice === "ROCK"){
-        console.log("Tie!")
+        console.log("Tie!");
     } else if (humanChoice === "ROCK" && compChoice === "PAPER"){
-        console.log("You Lose!")
+        console.log("You Lose!");
+        computerScore++;
+        console.log("Computer Score: " + computerScore);
+        console.log("Human Score: " + humanScore);
     } else if (humanChoice === "ROCK" && compChoice === "SCISSORS"){
-        console.log("You Win!")
+        console.log("You Win!");
+        humanScore++;
+        console.log("Computer Score: " + computerScore);
+        console.log("Human Score: " + humanScore);
     }
 }
 
