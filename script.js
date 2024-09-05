@@ -24,7 +24,7 @@ function playRound(compChoice, humanChoice) {
     console.log("Computer: " + compChoice);
     console.log("Human: " + humanChoice);
 
-    if (humanChoice === "ROCK" && compChoice === "ROCK"){
+    if (humanChoice === compChoice){
         console.log("Tie!");
         console.log("Computer Score: " + computerScore);
         console.log("Human Score: " + humanScore);
@@ -38,10 +38,6 @@ function playRound(compChoice, humanChoice) {
         humanScore++;
         console.log("Computer Score: " + computerScore);
         console.log("Human Score: " + humanScore);
-    } else if (humanChoice === "PAPER" && compChoice === "PAPER"){
-        console.log("Tie!");
-        console.log("Computer Score: " + computerScore);
-        console.log("Human Score: " + humanScore);
     } else if (humanChoice === "PAPER" && compChoice === "SCISSORS"){
         console.log("You Lose!");
         computerScore++;
@@ -50,10 +46,6 @@ function playRound(compChoice, humanChoice) {
     } else if (humanChoice === "PAPER" && compChoice === "ROCK"){
         console.log("You Win!");
         humanScore++;
-        console.log("Computer Score: " + computerScore);
-        console.log("Human Score: " + humanScore);
-    }  else if (humanChoice === "SCISSORS" && compChoice === "SCISSORS"){
-        console.log("Tie!");
         console.log("Computer Score: " + computerScore);
         console.log("Human Score: " + humanScore);
     } else if (humanChoice === "SCISSORS" && compChoice === "ROCK"){
