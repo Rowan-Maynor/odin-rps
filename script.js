@@ -3,13 +3,12 @@ let computerScore = 0;
 
 function getComputerChoice () {
     let rand = Math.floor(Math.random() * 100 );
-    console.log(rand);
     if (rand <= 33) {
-        return "Rock";
+        return "ROCK";
     } else if (rand <= 66) {
-        return "Paper";
+        return "PAPER";
     } else {
-        return "Scissors";
+        return "SCISSORS";
     }
 }
 
@@ -18,6 +17,19 @@ function getHumanChoice () {
     return answer;
 }
 
-console.log(getHumanChoice());
+function playRound(compChoice, humanChoice) {
+    humanChoice = humanChoice.toUpperCase();
 
-console.log(getComputerChoice());
+    console.log("Computer: " + compChoice);
+    console.log("Human: " + humanChoice);
+
+    if (humanChoice === "ROCK" && compChoice === "ROCK"){
+        console.log("Tie!")
+    } else if (humanChoice === "ROCK" && compChoice === "PAPER"){
+        console.log("You Lose!")
+    } else if (humanChoice === "ROCK" && compChoice === "SCISSORS"){
+        console.log("You Win!")
+    }
+}
+
+playRound(getComputerChoice(), getHumanChoice());
