@@ -62,4 +62,12 @@ function playRound(compChoice, humanChoice) {
     }
 }
 
-playRound(getComputerChoice(), getHumanChoice());
+function playGame() {
+    playRound(getComputerChoice(), getHumanChoice());
+    playRound(getComputerChoice(), getHumanChoice());
+    playRound(getComputerChoice(), getHumanChoice());
+    playRound(getComputerChoice(), getHumanChoice());
+    playRound(getComputerChoice(), getHumanChoice()); // plays 5 rounds total
+}
+
+playGame();
