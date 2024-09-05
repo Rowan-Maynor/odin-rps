@@ -18,6 +18,7 @@ function getHumanChoice () {
 }
 
 function playRound(compChoice, humanChoice) {
+    // compensates for spelling errors
     humanChoice = humanChoice.toUpperCase();
 
     console.log("Computer: " + compChoice);
