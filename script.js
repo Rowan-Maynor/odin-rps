@@ -2,7 +2,7 @@ let humanScore = 0;
 let computerScore = 0;
 
 function getComputerChoice () {
-    let rand = Math.floor(Math.random() * 100 );
+    const rand = Math.floor(Math.random() * 100 );
     if (rand <= 33) {
         return "ROCK";
     } else if (rand <= 66) {
@@ -13,7 +13,7 @@ function getComputerChoice () {
 }
 
 function getHumanChoice () {
-    let answer = prompt("Please choose Rock, Paper, or Scissors!");
+    const answer = prompt("Please choose Rock, Paper, or Scissors!");
     return answer;
 }
 
