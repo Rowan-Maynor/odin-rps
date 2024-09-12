@@ -1,5 +1,11 @@
-let humanScore = 0;
-let computerScore = 0;
+let humanScoreTotal = 0;
+let computerScoreTotal = 0;
+
+const buttons = document.querySelectorAll("button");
+const resultMessage = document.querySelector("#resultMessage");
+const compScore = document.querySelector("#compScore");
+const hmnScore = document.querySelector("#hmnScore");
+const controlsP = document.querySelector("#controlsP")
 
 function getComputerChoice () {
     const rand = Math.floor(Math.random() * 100 );
@@ -12,59 +18,75 @@ function getComputerChoice () {
     }
 }
 
-function getHumanChoice () {
-    const answer = prompt("Please choose Rock, Paper, or Scissors!");
-    return answer;
-}
-
 function playRound(compChoice, humanChoice) {
     // compensates for spelling errors
     humanChoice = humanChoice.toUpperCase();
 
-    console.log("Computer: " + compChoice);
-    console.log("Human: " + humanChoice);
-
     if (humanChoice === compChoice){
-        console.log("Tie!");
-        console.log("Computer Score: " + computerScore);
-        console.log("Human Score: " + humanScore);
+        resultMessage.textContent = "Tie!";
     } else if (humanChoice === "ROCK" && compChoice === "PAPER"){
-        console.log("You Lose!");
-        computerScore++;
-        console.log("Computer Score: " + computerScore);
-        console.log("Human Score: " + humanScore);
+        resultMessage.textContent = "You Lose!";
+        computerScoreTotal++;
+        compScore.textContent = `Computer Score: ${computerScoreTotal}`;
+        hmnScore.textContent = `Human Score: ${humanScoreTotal}`;
     } else if (humanChoice === "ROCK" && compChoice === "SCISSORS"){
-        console.log("You Win!");
-        humanScore++;
-        console.log("Computer Score: " + computerScore);
-        console.log("Human Score: " + humanScore);
+        resultMessage.textContent = "You Win!";
+        humanScoreTotal++;
+        compScore.textContent = `Computer Score: ${computerScoreTotal}`;
+        hmnScore.textContent = `Human Score: ${humanScoreTotal}`;
     } else if (humanChoice === "PAPER" && compChoice === "SCISSORS"){
-        console.log("You Lose!");
-        computerScore++;
-        console.log("Computer Score: " + computerScore);
-        console.log("Human Score: " + humanScore);
+        resultMessage.textContent = "You Lose!";
+        computerScoreTotal++;
+        compScore.textContent = `Computer Score: ${computerScoreTotal}`;
+        hmnScore.textContent = `Human Score: ${humanScoreTotal}`;
     } else if (humanChoice === "PAPER" && compChoice === "ROCK"){
-        console.log("You Win!");
-        humanScore++;
-        console.log("Computer Score: " + computerScore);
-        console.log("Human Score: " + humanScore);
+        resultMessage.textContent = "You Win!";
+        humanScoreTotal++;
+        compScore.textContent = `Computer Score: ${computerScoreTotal}`;
+        hmnScore.textContent = `Human Score: ${humanScoreTotal}`;
     } else if (humanChoice === "SCISSORS" && compChoice === "ROCK"){
-        console.log("You Lose!");
-        computerScore++;
-        console.log("Computer Score: " + computerScore);
-        console.log("Human Score: " + humanScore);
+        resultMessage.textContent = "You Lose!";
+        computerScoreTotal++;
+        compScore.textContent = `Computer Score: ${computerScoreTotal}`;
+        hmnScore.textContent = `Human Score: ${humanScoreTotal}`;
     } else if (humanChoice === "SCISSORS" && compChoice === "PAPER"){
-        console.log("You Win!");
-        humanScore++;
-        console.log("Computer Score: " + computerScore);
-        console.log("Human Score: " + humanScore);
+        resultMessage.textContent = "You Win!";
+        humanScoreTotal++;
+        compScore.textContent = `Computer Score: ${computerScoreTotal}`;
+        hmnScore.textContent = `Human Score: ${humanScoreTotal}`;
+    }
+
+    if (humanScoreTotal >= 5){
+        endGame("HUMAN");
+    } else if (computerScoreTotal >= 5){
+        endGame("COMPUTER");
     }
 }
 
-function playGame(rounds) {
-    for(let i = 0; i < rounds; i++) {
-        playRound(getComputerChoice(), getHumanChoice());
-    }
-}
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        let selection = button.textContent;
+        playRound(getComputerChoice(), selection);
+    });
+});
 
-playGame(5);
+function endGame(winner){
+    const div = document.createElement("div");
+    const p = document.createElement("p");
+
+    if(winner === "HUMAN"){
+        p.textContent = "Congrats! You won 5 rounds!";
+    } else {
+        p.textContent = "Sorry! You lost 5 rounds!";
+    }
+
+    div.appendChild(p);
+    document.body.appendChild(div);
+
+    buttons.forEach((button) => {
+        button.remove();
+    });
+
+    resultMessage.remove();
+    controlsP.remove();
+}
